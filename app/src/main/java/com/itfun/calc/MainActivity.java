@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private double num1 = 0;
     private double num2 = 0;
     private Calculator calculator;
-    private String appThemeString = "Светлая";
 
     private final int MAX_INPUT_LENGTH = 15;
     private final String SHARED_PREFS = "shared_prefs";
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonDiv = findViewById(R.id.button_div);
         Button buttonPercent = findViewById(R.id.button_percent);
         Button buttonEqual = findViewById(R.id.button_equal);
-        switchTheme = (Switch) findViewById(R.id.switch_app_theme);
+        switchTheme = findViewById(R.id.switch_app_theme);
         switchTheme.setChecked(!getAppTheme());
 
         if (savedInstanceState != null) {
@@ -65,15 +63,12 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(numsStr);
         }
 
-        switchTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                setAppTheme(!getAppTheme());
+        switchTheme.setOnCheckedChangeListener((compoundButton, b) -> {
+            setAppTheme(!getAppTheme());
 
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -195,17 +190,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("AppTheme", flag);
-        if (flag) {
-            editor.putString("AppThemeStr", "Светлая");
-        } else {
-            editor.putString("AppThemeStr", "Темная");
-        }
         editor.apply();
     }
 
     private boolean getAppTheme() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String a = sharedPreferences.getString("AppThemeStr", "Светлая");
         return sharedPreferences.getBoolean("AppTheme", true);
     }
 }
