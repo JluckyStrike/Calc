@@ -18,4 +18,8 @@
     <string name="equal_button">=</string>
     <string name="percent_button">%</string>
     <string name="min_button">-</string>
+    <string name="theme_stanadard">Theme Standard</string>
+    <string name="theme_night">Theme Night</string>
+    <string name="theme_blue_sky">Theme Blue Sky</string>
+    <string name="choose_theme">Выбрать тему</string>
 </resources>
