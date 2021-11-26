@@ -13,4 +13,21 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Night">
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="android:windowBackground">#070C37</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#077ECF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.BlueSky">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorOnPrimary">@color/teal_200</item>
+        <item name="android:windowBackground">#33C2F5</item>
+        <item name="colorPrimaryDark">#077ECF</item>
+    </style>
+
+    <style name="Theme"></style>
 </resources>

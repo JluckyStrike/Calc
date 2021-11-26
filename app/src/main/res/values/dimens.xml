@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">32sp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="half_padding">8dp</dimen>
+    <dimen name="text_size_theme">20sp</dimen>
+    <dimen name="margin_start_btn">20dp</dimen>
+    <dimen name="half_margin">8dp</dimen>
+    <dimen name="text_size_btn">24sp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+</resources>

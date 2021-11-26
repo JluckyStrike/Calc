@@ -1,8 +1,16 @@
 package com.itfun.calc;
 
+import static com.itfun.calc.theme.SelectThemeActivity.EXTRA_THEME;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,18 +18,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itfun.calc.calculator.Calculator;
+import com.itfun.calc.domain.Theme;
+import com.itfun.calc.storage.ThemeStorage;
+import com.itfun.calc.theme.SelectThemeActivity;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textView;
+    private TextView textView;
     private String numsStr = "";
     private String oper = "";
     private double num1 = 0;
     private double num2 = 0;
-    Calculator calculator;
+    private Calculator calculator;
+    private ThemeStorage themeStorage;
+
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                Theme theme = (Theme) result.getData().getSerializableExtra(SelectThemeActivity.EXTRA_THEME);
+                themeStorage.saveTheme(theme);
+
+                recreate();
+            }
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        themeStorage = new ThemeStorage(this);
+        setTheme(themeStorage.getSavedTheme().getTheme());
         setContentView(R.layout.activity_main);
 
         calculator = new Calculator();
@@ -140,6 +166,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             oper = "";
+        });
+
+        findViewById(R.id.choose_theme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SelectThemeActivity.class);
+                intent.putExtra(EXTRA_THEME, themeStorage.getSavedTheme());
+                launcher.launch(intent);
+            }
         });
     }
 

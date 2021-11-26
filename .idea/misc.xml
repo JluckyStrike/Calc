@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/activity_main.xml" value="0.3359375" />
+        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/activity_list_theme.xml" value="0.3359375" />
+        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/activity_second_open.xml" value="0.3359375" />
+        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/activity_select_theme.xml" value="0.3359375" />
+        <entry key="..\:/Users/maini/AndroidStudioProjects/Calc/app/src/main/res/layout/item_theme.xml" value="0.33" />
       </map>
     </option>
   </component>
